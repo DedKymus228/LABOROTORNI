@@ -1,21 +1,43 @@
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
-#define MULTIPLY(a, b) ((a) * (b))
+double calcFunction(double x) {
+    double y;
 
-template <typename T>
-T calculate(T x, T y) {
-    return MULTIPLY(x, x) + 2 * MULTIPLY(y, y) - 3 * x;
+    if (x >= 0) {
+        y = pow(x, 2) + 4 * pow(x, x) + 2;
+    }
+    else {
+        double product = 1;
+        for (int i = 1; i <= 4; i++) {
+            product = product * (x + pow(x, i - 1));
+        }
+        y = product;
+    }
+    return y;
 }
 
+
 int main() {
-    long x_long = 5;
-    long y_long = 3;
-    cout << calculate(x_long, y_long) << endl;
 
-    float x_float = 2.5;
-    float y_float = 1.2;
-    cout << calculate(x_float, y_float) << endl;
+    double start = -5.0;
+    double end = 4.0;
+    double h = 0.25;
 
+    cout << "Tabuliuvannia funkcii (Variant 1):" << endl;
+    cout << "----------------------" << endl;
+    cout << "   X    |      Y      " << endl;
+    cout << "----------------------" << endl;
+
+
+    for (double x = start; x <= end; x = x + h) {
+
+        double y = calcFunction(x);
+
+        cout << showpos << fixed << setprecision(2) << x << " | "
+             << noshowpos << setprecision(4) << setw(10) << y << endl;
+    }
     return 0;
 }

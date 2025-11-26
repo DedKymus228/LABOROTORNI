@@ -1,16 +1,17 @@
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
 int main() {
+
     const int N = 6;
     double arr[N];
 
     for (int i = 0; i < N; i++) {
         if (i % 2 == 0) {
             arr[i] = 15.5 - i;
-        } else {
+        }
+        else {
             arr[i] = 7.2 + i;
         }
     }
@@ -24,11 +25,6 @@ int main() {
             }
         }
     }
-
-    for (int i = 0; i < N; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 
     return 0;
 }
